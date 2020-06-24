@@ -46,7 +46,7 @@ Os clientes terão acesso ao aplicativo móvel, onde poderão:
 <p align="center">
   <img alt="GoBarber" title="GoBarber" src="./assets/iphone-agendamento.png" width="200px">
 
-  <img alt="GoBarber" title="GoBarber" src="./assets/iphone-hour.png width="200px">
+  <img alt="GoBarber" title="GoBarber" src="./assets/iphone-hour.png" width="200px">
 </p>
 
 ### Web
