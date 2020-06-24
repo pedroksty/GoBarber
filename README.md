@@ -63,11 +63,11 @@ Os clientes terão acesso ao aplicativo móvel, onde poderão:
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- [Expo][expo]
 - [Node.js][nodejs]
 - [React][reactjs]
 - [React Native][rn]
-- [TypeScript][typescript]
+- [redux][redux]
+- [javascript][javascript]
 
 
 ## 🚀 Como executar o projeto
@@ -176,3 +176,5 @@ Feito com ❤️ por Pedro henrique 👋🏽 [Entre em contato!](https://www.lin
 [prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 [rs]: https://rocketseat.com.br
 [yarn]: https://yarnpkg.com/getting-started/install
+[javascript]: https://www.javascript.com/
+[redux]: https://redux.js.org/
