@@ -10,7 +10,7 @@ UsersRoutes.post('/', async (request, response) => {
 
     const createUser = new CreateUserService();
 
-    const user = createUser.execute({
+    const user = await createUser.execute({
       name,
       email,
       password
