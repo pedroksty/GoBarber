@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import authConfig from '../config/auth';
 
 import User from '../models/User';
 
@@ -31,7 +32,7 @@ class AuthenticateUserService {
       throw new Error('Dados inválidos');
     }
 
-    const token = sign({}, '8ad969d697a1baae839bab0bcbd03b79', {
+    const token = sign({}, authConfig.jwt.secret, {
       subject: user.id,
       expiresIn: '7d'
     });
