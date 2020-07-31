@@ -9,5 +9,17 @@
     ]
   },
   "author": "pedroksty <pedrotrab2132@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@monorepo/eslint-config": "*",
+    "@types/jest": "^26.0.7",
+    "@types/node": "^14.0.27",
+    "add": "^2.0.6",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.4",
+    "typescript": "^3.9.5"
+  }
 }
