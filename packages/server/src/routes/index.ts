@@ -1,10 +1,15 @@
-import { Router } from 'express'
-import appointmentRouter from './appointments.routes'
-import initialServer from './initialServer.route'
+import { Router } from 'express';
 
-const routes = Router()
+import appointmentRouter from './appointments.routes';
+import usersRouter from './users.routes';
 
-routes.use('/appointments', appointmentRouter)
-routes.use('/', initialServer)
+import initialServer from './initialServer.route';
 
-export default routes
+const routes = Router();
+
+routes.use('/appointments', appointmentRouter);
+routes.use('/users', usersRouter);
+
+routes.use('/', initialServer);
+
+export default routes;

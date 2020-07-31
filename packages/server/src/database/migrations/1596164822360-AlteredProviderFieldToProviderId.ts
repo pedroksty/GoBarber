@@ -3,12 +3,12 @@ import {
   QueryRunner,
   TableColumn,
   TableForeignKey
-} from 'typeorm'
+} from 'typeorm';
 
 export default class AlteredProviderFieldToProviderId1596164822360
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropColumn('appointments', 'provider')
+    await queryRunner.dropColumn('appointments', 'provider');
 
     await queryRunner.addColumn(
       'appointments',
@@ -17,7 +17,7 @@ export default class AlteredProviderFieldToProviderId1596164822360
         type: 'uuid',
         isNullable: true
       })
-    )
+    );
 
     await queryRunner.createForeignKey(
       'appointments',
@@ -29,13 +29,13 @@ export default class AlteredProviderFieldToProviderId1596164822360
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE'
       })
-    )
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('appointments', 'AppointmentProvider')
+    await queryRunner.dropForeignKey('appointments', 'AppointmentProvider');
 
-    await queryRunner.dropColumn('appointments', 'provider_id')
+    await queryRunner.dropColumn('appointments', 'provider_id');
 
     await queryRunner.addColumn(
       'appointments',
@@ -43,6 +43,6 @@ export default class AlteredProviderFieldToProviderId1596164822360
         name: 'provider',
         type: 'varchar'
       })
-    )
+    );
   }
 }

@@ -33,7 +33,8 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     indent: 'off',
-    camelcase: 'off'
+    camelcase: 'off',
+    semi: 'off'
   },
   settings: {
     'import/resolver': {
@@ -43,4 +44,4 @@ module.exports = {
       version: 'detect'
     }
   }
-}
+};
