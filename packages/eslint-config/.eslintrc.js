@@ -31,7 +31,9 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     'space-before-function-paren': 'off',
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-empty-function': 'off'
+    '@typescript-eslint/no-empty-function': 'off',
+    indent: 'off',
+    camelcase: 'off'
   },
   settings: {
     'import/resolver': {

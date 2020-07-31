@@ -11,7 +11,9 @@
   "author": "pedroksty <pedrotrab2132@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev:server": "yarn workspace @monorepo/server dev",
+    "dev:add": "yarn workspace @monorepo/server add"
   },
   "devDependencies": {
     "@monorepo/eslint-config": "*",
