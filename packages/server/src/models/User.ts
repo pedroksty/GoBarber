@@ -19,6 +19,9 @@ class User {
 
   @Column()
   password: string;
+
+  @Column()
+  avatar: string;
 }
 
 export default User;
