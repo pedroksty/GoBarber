@@ -34,7 +34,8 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     indent: 'off',
     camelcase: 'off',
-    semi: 'off'
+    semi: 'off',
+    'react/prop-types': 'off'
   },
   settings: {
     'import/resolver': {
