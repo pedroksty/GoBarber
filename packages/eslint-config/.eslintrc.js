@@ -36,7 +36,8 @@ module.exports = {
     camelcase: 'off',
     semi: 'off',
     'react/prop-types': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'no-unused-expressions': 'off'
   },
   settings: {
     'import/resolver': {
