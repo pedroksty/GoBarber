@@ -35,7 +35,8 @@ module.exports = {
     indent: 'off',
     camelcase: 'off',
     semi: 'off',
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off'
   },
   settings: {
     'import/resolver': {
