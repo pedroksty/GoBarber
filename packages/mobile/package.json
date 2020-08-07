@@ -1,6 +1,6 @@
 {
-  "name": "@monorepo/gobarber",
-  "version": "1.0.0",
+  "name": "@gobarber/mobile",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
