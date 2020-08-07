@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request, Response } from 'express';
 
 class UserController {
   async store(request: Request, response: Response) {}
@@ -12,4 +12,4 @@ class UserController {
   async delete(request: Request, response: Response) {}
 }
 
-export default new UserController()
+export default new UserController();
