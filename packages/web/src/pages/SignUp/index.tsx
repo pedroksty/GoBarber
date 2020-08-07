@@ -3,8 +3,9 @@ import { FiMail, FiLock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 
-import { Container, Content, Background } from './styles';
+import { Container, Content, Background, AnimationContainer } from './styles';
 
 import logo from '../../assets/logo.svg';
 
@@ -42,26 +43,28 @@ const SignUp: React.FC = () => {
       <Background />
 
       <Content>
-        <img src={logo} alt="GoBarber" />
+        <AnimationContainer>
+          <img src={logo} alt="GoBarber" />
 
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <h1>Faça seu cadastro</h1>
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <h1>Faça seu cadastro</h1>
 
-          <Input icon={FiUser} name="name" placeholder="Nome" />
-          <Input icon={FiMail} name="email" placeholder="E-mail" />
-          <Input
-            icon={FiLock}
-            name="password"
-            placeholder="Senha"
-            type="password"
-          />
-          <Button type="submit">Cadastrar</Button>
-        </Form>
+            <Input icon={FiUser} name="name" placeholder="Nome" />
+            <Input icon={FiMail} name="email" placeholder="E-mail" />
+            <Input
+              icon={FiLock}
+              name="password"
+              placeholder="Senha"
+              type="password"
+            />
+            <Button type="submit">Cadastrar</Button>
+          </Form>
 
-        <a href="login">
-          <FiArrowLeft />
-          Já tenho uma conta
-        </a>
+          <Link to="/">
+            <FiArrowLeft />
+            Já tenho uma conta
+          </Link>
+        </AnimationContainer>
       </Content>
     </Container>
   );
