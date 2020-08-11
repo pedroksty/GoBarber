@@ -9,7 +9,9 @@
     ],
     "nohoist": [
       "**/react-native",
-      "**/react-native/**"
+      "**/react-native/**",
+      "**react-native-gesture-handler",
+      "**react-native-gesture-handler/**"
     ]
   },
   "author": "pedroksty <pedrotrab2132@gmail.com>",
