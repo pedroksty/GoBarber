@@ -37,7 +37,9 @@ module.exports = {
     semi: 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
-    'no-unused-expressions': 'off'
+    'no-unused-expressions': 'off',
+    '@typescript-eslint/interface-name-prefix': 'off',
+    'no-useless-constructor': 'off'
   },
   settings: {
     'import/resolver': {
