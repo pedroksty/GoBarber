@@ -5,6 +5,7 @@
   "author": "Pedro Henrique <pedrotrab2132@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "test:server": "jest",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "node dist/server.js",
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/shared/infra/http/server.ts --config ./ormconfig.json",
