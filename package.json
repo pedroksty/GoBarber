@@ -18,6 +18,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "test:server": "yarn workspace @monorepo/server test:server",
     "dev:server": "yarn workspace @monorepo/server dev",
     "dev:web": "yarn workspace @monorepo/web start"
   },
