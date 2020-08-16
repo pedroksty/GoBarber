@@ -17,7 +17,7 @@ export const port = 4444;
 
 app.use(express.json());
 app.use(cors());
-app.use('/files', express.static(uploadConfig.directory));
+app.use('/files', express.static(uploadConfig.tmpFolder));
 app.use(router);
 
 app.use(
