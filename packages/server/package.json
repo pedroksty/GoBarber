@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/server",
+  "name": "@gobarber/server",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Pedro Henrique <pedrotrab2132@gmail.com>",
