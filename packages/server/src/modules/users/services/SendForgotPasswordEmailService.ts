@@ -6,6 +6,7 @@ import AppError from '@shared/errors/AppError';
 
 import IUsersRepository from '../repositories/IUsersREpository';
 import IMailProvider from '@shared/container/providers/MailProviver/models/IMailProvider';
+import IUserTokenRepository from '../repositories/IUsersTokensRepository';
 
 interface IRequest {
   email: string;
@@ -18,15 +19,20 @@ class SendForgotPasswordEmailService {
     private usersRepository: IUsersRepository,
 
     @inject('MailProvider')
-    private mailProvder: IMailProvider
+    private mailProvder: IMailProvider,
+
+    @inject('UserTokensRepository')
+    private usersTokenRepository: IUserTokenRepository
   ) {}
 
   public async execute({ email }: IRequest): Promise<void> {
-    const checkUserExists = await this.usersRepository.findByEmail(email);
+    const user = await this.usersRepository.findByEmail(email);
 
-    if (!checkUserExists) {
+    if (!user) {
       throw new AppError('User does not exits');
     }
+
+    await this.usersTokenRepository.generate(user.id);
 
     this.mailProvder.sendMail(email, 'Pedido de recuperação de senha recebido');
   }
