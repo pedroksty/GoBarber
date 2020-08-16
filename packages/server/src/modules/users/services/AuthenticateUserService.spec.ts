@@ -3,6 +3,7 @@ import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 
 import AuthenticateUserService from './AuthenticateUserSevice';
 import CreateUserService from './CreateUserService';
+import AppError from '@shared/errors/AppError';
 
 describe('AuthenticateUser', () => {
   it('should be able authenticate', async () => {
@@ -31,5 +32,21 @@ describe('AuthenticateUser', () => {
 
     expect(response).toHaveProperty('token');
     expect(response.user).toEqual(user);
+  });
+
+  it('should not be able to authenticate with non existing user', async () => {
+    const fakeUserRepository = new FakeUserRepository();
+    const fakeHashProvider = new FakeHashProvider();
+    const authenticaetUser = new AuthenticateUserService(
+      fakeUserRepository,
+      fakeHashProvider
+    );
+
+    expect(
+      authenticaetUser.execute({
+        email: 'mario@contact.com',
+        password: '12345678'
+      })
+    ).rejects.toBeInstanceOf(AppError);
   });
 });
