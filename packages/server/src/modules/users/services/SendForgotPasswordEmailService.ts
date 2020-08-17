@@ -1,7 +1,5 @@
 import { injectable, inject } from 'tsyringe';
 
-import User from '../infra/typeorm/entities/User';
-
 import AppError from '@shared/errors/AppError';
 
 import IUsersRepository from '../repositories/IUsersREpository';
@@ -21,7 +19,7 @@ class SendForgotPasswordEmailService {
     @inject('MailProvider')
     private mailProvder: IMailProvider,
 
-    @inject('UserTokensRepository')
+    @inject('UserTokenRepository')
     private usersTokenRepository: IUserTokenRepository
   ) {}
 
@@ -34,7 +32,10 @@ class SendForgotPasswordEmailService {
 
     await this.usersTokenRepository.generate(user.id);
 
-    this.mailProvder.sendMail(email, 'Pedido de recuperação de senha recebido');
+    await this.mailProvder.sendMail(
+      email,
+      'Pedido de recuperação de senha recebido'
+    );
   }
 }
 
