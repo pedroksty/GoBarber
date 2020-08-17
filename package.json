@@ -1,5 +1,5 @@
 {
-  "name": "monorepo",
+  "name": "gobarber",
   "version": "1.0.0",
   "main": "index.js",
   "private": "true",
@@ -18,9 +18,9 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "test:server": "yarn workspace @monorepo/server test:server",
-    "dev:server": "yarn workspace @monorepo/server dev",
-    "dev:web": "yarn workspace @monorepo/web start"
+    "test:server": "yarn workspace @gobarber/server test:server",
+    "dev:server": "yarn workspace @gobarber/server dev",
+    "dev:web": "yarn workspace @gobarber/web start"
   },
   "dependencies": {
     "react": "^16.13.1",
