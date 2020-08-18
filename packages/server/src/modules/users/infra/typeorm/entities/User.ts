@@ -4,24 +4,24 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn
-} from 'typeorm';
+} from 'typeorm'
 
 @Entity('users')
 class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: string
 
   @Column()
-  name: string;
+  name: string
 
   @Column()
-  email: string;
+  email: string
 
   @Column()
-  password: string;
+  password: string
 
   @Column()
-  avatar: string;
+  avatar: string
 }
 
-export default User;
+export default User
