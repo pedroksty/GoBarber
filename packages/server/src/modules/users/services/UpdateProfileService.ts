@@ -22,7 +22,13 @@ class UpdateProfile {
     private hashProvider: IHashProvider
   ) {}
 
-  public async execute({ name, user_id, email }: IRequest): Promise<User> {
+  public async execute({
+    name,
+    user_id,
+    email,
+    password,
+    old_password
+  }: IRequest): Promise<User> {
     const user = await this.usersRepository.findById(user_id)
 
     if (!user) {
@@ -37,6 +43,24 @@ class UpdateProfile {
 
     user.name = name
     user.email = email
+
+    if (password && !old_password) {
+      throw new AppError(
+        'You need to inform the old password to set a new password'
+      )
+    }
+
+    if (password && old_password) {
+      const checkOldPassword = await this.hashProvider.compareHash(
+        old_password,
+        user.password
+      )
+
+      if (!checkOldPassword) {
+        throw new AppError('Old Password wrong')
+      }
+      user.password = await this.hashProvider.generateHash(password)
+    }
 
     return this.usersRepository.save(user)
   }
