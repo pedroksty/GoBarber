@@ -6,6 +6,7 @@ const ProfileRouter = Router()
 
 ProfileRouter.use(ensureAuthenticate)
 
+ProfileRouter.get('/', ProfileController.show)
 ProfileRouter.put('/', ProfileController.update)
 
 export default ProfileRouter
