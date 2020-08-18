@@ -1,40 +1,35 @@
-import FakeUserRepository from '@modules/users/repositories/fakes/FakeUserRepository';
-import CreateUserService from './CreateUserService';
-import AppError from '@shared/errors/AppError';
-import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
+import FakeUserRepository from '@modules/users/repositories/fakes/FakeUserRepository'
+import CreateUserService from './CreateUserService'
+import AppError from '@shared/errors/AppError'
+import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider'
+
+let fakeUserRepository: FakeUserRepository
+let fakehashProvider: FakeHashProvider
+let createUser: CreateUserService
 
 describe('CreateUser', () => {
-  it('should be able to create a new user', async () => {
-    const fakeUserRepository = new FakeUserRepository();
-    const fakehashProvider = new FakeHashProvider();
-    const createUser = new CreateUserService(
-      fakeUserRepository,
-      fakehashProvider
-    );
+  beforeEach(() => {
+    fakeUserRepository = new FakeUserRepository()
+    fakehashProvider = new FakeHashProvider()
+    createUser = new CreateUserService(fakeUserRepository, fakehashProvider)
+  })
 
+  it('should be able to create a new user', async () => {
     const user = await createUser.execute({
       name: 'Mario Prato',
       email: 'mario@contact.com',
       password: '12345678'
-    });
+    })
 
-    expect(user).toHaveProperty('id');
-  });
+    expect(user).toHaveProperty('id')
+  })
 
   it('should not be able to create a new user with the same email from another', async () => {
-    const fakeUserRepository = new FakeUserRepository();
-    const fakehashProvider = new FakeHashProvider();
-
-    const createUser = new CreateUserService(
-      fakeUserRepository,
-      fakehashProvider
-    );
-
     await createUser.execute({
       name: 'Mario Prato',
       email: 'mario@contact.com',
       password: '12345678'
-    });
+    })
 
     await expect(
       createUser.execute({
@@ -42,6 +37,6 @@ describe('CreateUser', () => {
         email: 'mario@contact.com',
         password: '12345678'
       })
-    ).rejects.toBeInstanceOf(AppError);
-  });
-});
+    ).rejects.toBeInstanceOf(AppError)
+  })
+})

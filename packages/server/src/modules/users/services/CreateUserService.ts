@@ -1,16 +1,16 @@
-import { injectable, inject } from 'tsyringe';
+import { injectable, inject } from 'tsyringe'
 
-import User from '../infra/typeorm/entities/User';
+import User from '../infra/typeorm/entities/User'
 
-import AppError from '@shared/errors/AppError';
+import AppError from '@shared/errors/AppError'
 
-import IUsersRepository from '../repositories/IUsersREpository';
-import IHashProvider from '../providers/HashProvider/models/IHashProvider';
+import IUsersRepository from '../repositories/IUsersREpository'
+import IHashProvider from '../providers/HashProvider/models/IHashProvider'
 
 interface IRequest {
-  name: string;
-  email: string;
-  password: string;
+  name: string
+  email: string
+  password: string
 }
 
 @injectable()
@@ -24,21 +24,21 @@ class CreateUserService {
   ) {}
 
   public async execute({ name, email, password }: IRequest): Promise<User> {
-    const checkUserExits = await this.usersRepository.findByEmail(email);
+    const checkUserExits = await this.usersRepository.findByEmail(email)
 
     if (checkUserExits) {
-      throw new AppError('Email já existente');
+      throw new AppError('Email já existente')
     }
 
-    const hashPassword = await this.hashProvider.generateHash(password);
+    const hashPassword = await this.hashProvider.generateHash(password)
 
     const user = await this.usersRepository.create({
       name,
       email,
       password: hashPassword
-    });
-    return user;
+    })
+    return user
   }
 }
 
-export default CreateUserService;
+export default CreateUserService

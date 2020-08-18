@@ -1,17 +1,17 @@
-import path from 'path';
-import fs from 'fs';
-import { injectable, inject } from 'tsyringe';
+import path from 'path'
+import fs from 'fs'
+import { injectable, inject } from 'tsyringe'
 
-import AppError from '@shared/errors/AppError';
+import AppError from '@shared/errors/AppError'
 
-import uploadConfig from '@config/upload';
-import User from '@modules/users/infra/typeorm/entities/User';
-import IUsersRepository from '../repositories/IUsersREpository';
-import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
+import uploadConfig from '@config/upload'
+import User from '@modules/users/infra/typeorm/entities/User'
+import IUsersRepository from '../repositories/IUsersREpository'
+import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider'
 
 interface IRequest {
-  user_id: string;
-  avatarFileName: string;
+  user_id: string
+  avatarFileName: string
 }
 @injectable()
 class UpdateUserAvatarService {
@@ -24,24 +24,24 @@ class UpdateUserAvatarService {
   ) {}
 
   public async execute({ user_id, avatarFileName }: IRequest): Promise<User> {
-    const user = await this.usersRepository.findById(user_id);
+    const user = await this.usersRepository.findById(user_id)
 
     if (!user) {
-      throw new AppError('Only authenticated users can change avatar', 401);
+      throw new AppError('Only authenticated users can change avatar', 401)
     }
 
     if (user.avatar) {
-      await this.storageProvider.deleteFile(user.avatar);
+      await this.storageProvider.deleteFile(user.avatar)
     }
 
-    const fileName = await this.storageProvider.saveFile(avatarFileName);
+    const fileName = await this.storageProvider.saveFile(avatarFileName)
 
-    user.avatar = fileName;
+    user.avatar = fileName
 
-    await this.usersRepository.save(user);
+    await this.usersRepository.save(user)
 
-    return user;
+    return user
   }
 }
 
-export default UpdateUserAvatarService;
+export default UpdateUserAvatarService
