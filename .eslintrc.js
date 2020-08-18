@@ -1,3 +1,3 @@
-const eslintConfig = require('@omnirepo/eslint-config')
+const eslintConfig = require('@gobarber/eslint-config')
 
 module.exports = eslintConfig

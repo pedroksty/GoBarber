@@ -1,13 +1,13 @@
-import { injectable, inject } from 'tsyringe';
+import { injectable, inject } from 'tsyringe'
 
-import AppError from '@shared/errors/AppError';
+import AppError from '@shared/errors/AppError'
 
-import IUsersRepository from '../repositories/IUsersREpository';
-import IMailProvider from '@shared/container/providers/MailProviver/models/IMailProvider';
-import IUserTokenRepository from '../repositories/IUsersTokensRepository';
+import IUsersRepository from '../repositories/IUsersREpository'
+import IMailProvider from '@shared/container/providers/MailProviver/models/IMailProvider'
+import IUserTokenRepository from '../repositories/IUsersTokensRepository'
 
 interface IRequest {
-  email: string;
+  email: string
 }
 
 @injectable()
@@ -24,19 +24,19 @@ class SendForgotPasswordEmailService {
   ) {}
 
   public async execute({ email }: IRequest): Promise<void> {
-    const user = await this.usersRepository.findByEmail(email);
+    const user = await this.usersRepository.findByEmail(email)
 
     if (!user) {
-      throw new AppError('User does not exits');
+      throw new AppError('User does not exits')
     }
 
-    await this.usersTokenRepository.generate(user.id);
+    await this.usersTokenRepository.generate(user.id)
 
     await this.mailProvder.sendMail(
       email,
       'Pedido de recuperação de senha recebido'
-    );
+    )
   }
 }
 
-export default SendForgotPasswordEmailService;
+export default SendForgotPasswordEmailService
