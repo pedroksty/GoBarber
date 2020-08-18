@@ -14,12 +14,12 @@ container.registerSingleton<IStorageProvider>(
   DiskStorageProvider
 )
 
-container.registerInstance<IMailProvider>(
-  'MailProvider',
-  new EtherealMailProvider()
-)
-
 container.registerSingleton<IMailTemplateProvider>(
   'MailTemplateProvider',
   HandleBarsTEmplateMailProvider
+)
+
+container.registerInstance<IMailProvider>(
+  'MailProvider',
+  container.resolve(EtherealMailProvider)
 )
