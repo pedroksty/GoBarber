@@ -29,6 +29,12 @@ class UpdateProfile {
       throw new AppError('user does not exits')
     }
 
+    const userWithUpdatedEmail = await this.usersRepository.findByEmail(email)
+
+    if (userWithUpdatedEmail && userWithUpdatedEmail.id !== user.id) {
+      throw new AppError('E-mail already exits')
+    }
+
     user.name = name
     user.email = email
 

@@ -36,4 +36,26 @@ describe('UpdateProfile', () => {
     expect(updatedUser.name).toBe('Mario Doe')
     expect(updatedUser.email).toBe('doe@contact.com')
   })
+
+  it('should not be able to  change to another  user email', async () => {
+    await fakeUserRepository.create({
+      name: 'Mario prato',
+      email: 'mario@contact.com',
+      password: '12345678'
+    })
+
+    const user = await fakeUserRepository.create({
+      name: 'test',
+      email: 'test@contact.com',
+      password: '12345678'
+    })
+
+    await expect(
+      updateProfile.execute({
+        user_id: user.id,
+        name: 'Mario Doe',
+        email: 'mario@contact.com'
+      })
+    ).rejects.toBeInstanceOf(AppError)
+  })
 })
