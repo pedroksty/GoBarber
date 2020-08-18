@@ -1,3 +1,3 @@
-const config = require('@monorepo/eslint-config')
+const eslintConfig = require('@omnirepo/eslint-config')
 
-module.exports = config
+module.exports = eslintConfig

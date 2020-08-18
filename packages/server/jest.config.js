@@ -1,6 +1,6 @@
-const { name } = require('./package.json');
-const { pathsToModuleNameMapper } = require('ts-jest/utils');
-const { compilerOptions } = require('./tsconfig.json');
+const { name } = require('./package.json')
+const { pathsToModuleNameMapper } = require('ts-jest/utils')
+const { compilerOptions } = require('./tsconfig.json')
 
 module.exports = {
   displayName: name,
@@ -13,4 +13,4 @@ module.exports = {
   collectCoverageFrom: ['<rootDir>/src/modules/**/services/*.ts'],
   coverageDirectory: 'coverage',
   coverageReporters: ['text-summary', 'lcov']
-};
+}
