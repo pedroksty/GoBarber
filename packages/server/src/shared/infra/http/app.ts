@@ -2,6 +2,7 @@ import 'reflect-metadata'
 
 import express, { Request, Response, NextFunction } from 'express'
 import cors from 'cors'
+import { errors } from 'celebrate'
 import 'express-async-errors'
 
 import router from './routes'
@@ -19,6 +20,7 @@ app.use(express.json())
 app.use(cors())
 app.use('/files', express.static(uploadConfig.uploadsFolder))
 app.use(router)
+app.use(errors())
 
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
