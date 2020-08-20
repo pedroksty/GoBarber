@@ -2,4 +2,6 @@ node_modules
 dist
 coverage
 
+ormconfig.json
+
 yarn-error.log
