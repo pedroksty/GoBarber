@@ -27,8 +27,6 @@ class ListProvidersServices {
         except_user_id: user_id
       })
 
-      console.log('QUERY SHAZAM KRAI')
-
       await this.cacheProvider.save(`providers-lists:${user_id}`, users)
     }
     return users

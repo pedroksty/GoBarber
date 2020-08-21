@@ -1,5 +1,5 @@
 export default {
   jwt: {
-    secret: process.env.APP_SECRET
+    secret: process.env.APP_SECRET || ''
   }
 }
