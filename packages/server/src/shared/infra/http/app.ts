@@ -9,6 +9,7 @@ import 'express-async-errors'
 import router from './routes'
 import AppError from '@shared/errors/AppError'
 import uploadConfig from '@config/upload'
+import rateLimiter from './middlewares/RateLimiter'
 
 import '@shared/infra/typeorm'
 import '@shared/container'
@@ -17,6 +18,7 @@ export const port = 4444
 
 const app = express()
 
+app.use(rateLimiter)
 app.use(express.json())
 app.use(cors())
 app.use('/files', express.static(uploadConfig.uploadsFolder))
