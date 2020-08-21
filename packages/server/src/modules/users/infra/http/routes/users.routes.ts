@@ -9,7 +9,7 @@ import UsersController from '../controllers/UsersController'
 import UserAvatarController from '../controllers/UserAvatarController'
 
 const UsersRoutes = Router()
-const upload = multer(uploadConfig)
+const upload = multer(uploadConfig.multer)
 
 UsersRoutes.post(
   '/',
