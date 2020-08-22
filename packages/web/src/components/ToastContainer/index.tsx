@@ -1,13 +1,13 @@
-import React from 'react';
-import { useTransition } from 'react-spring';
+import React from 'react'
+import { useTransition } from 'react-spring'
 
-import Toast from './Toast';
+import Toast from './Toast'
 
-import { ToastMessage } from '../../hooks/toast';
-import { Container } from './styles';
+import { ToastMessage } from '../../hooks/toast'
+import { Container } from './styles'
 
 interface ToastContaineProps {
-  messages: ToastMessage[];
+  messages: ToastMessage[]
 }
 
 const ToastContainer: React.FC<ToastContaineProps> = ({ messages }) => {
@@ -19,7 +19,7 @@ const ToastContainer: React.FC<ToastContaineProps> = ({ messages }) => {
       enter: { right: '0%', opacity: 1 },
       leave: { right: '-120% ', opacity: 0 }
     }
-  );
+  )
 
   return (
     <Container>
@@ -27,7 +27,7 @@ const ToastContainer: React.FC<ToastContaineProps> = ({ messages }) => {
         <Toast key={key} style={props} message={item}></Toast>
       ))}
     </Container>
-  );
-};
+  )
+}
 
-export default ToastContainer;
+export default ToastContainer
