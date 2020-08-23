@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {
   Container,
@@ -8,6 +8,8 @@ import {
   Content,
   Schedule,
   NextAppointment,
+  Section,
+  Appointment,
   Calendar
 } from './styles'
 
@@ -16,6 +18,8 @@ import { FiPower, FiClock } from 'react-icons/fi'
 import { useAuth } from '../../hooks/auth'
 
 const Dashboad: React.FC = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date())
+
   const { signOut, user } = useAuth()
 
   console.log(user)
@@ -64,6 +68,74 @@ const Dashboad: React.FC = () => {
               </span>
             </div>
           </NextAppointment>
+
+          <Section>
+            <strong>Manhã</strong>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                10:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/40571556?s=400&u=4e470b535fe9442fc6737bec46d5bcff69d57964&v=4"
+                  alt="Brenda Calado"
+                />
+                <strong>Brenda Calado</strong>
+              </div>
+            </Appointment>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                10:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/40571556?s=400&u=4e470b535fe9442fc6737bec46d5bcff69d57964&v=4"
+                  alt="Brenda Calado"
+                />
+                <strong>Brenda Calado</strong>
+              </div>
+            </Appointment>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                10:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/40571556?s=400&u=4e470b535fe9442fc6737bec46d5bcff69d57964&v=4"
+                  alt="Brenda Calado"
+                />
+                <strong>Brenda Calado</strong>
+              </div>
+            </Appointment>
+          </Section>
+
+          <Section>
+            <strong>Tarde</strong>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                10:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/40571556?s=400&u=4e470b535fe9442fc6737bec46d5bcff69d57964&v=4"
+                  alt="Brenda Calado"
+                />
+                <strong>Brenda Calado</strong>
+              </div>
+            </Appointment>
+          </Section>
         </Schedule>
 
         <Calendar />
