@@ -1,9 +1,37 @@
-import React from 'react';
+import React from 'react'
 
-// import { Container } from './styles';
+import { Container, Header, HeaderContent, Profile } from './styles'
+
+import logoImg from '../../assets/logo.svg'
+import { FiPower } from 'react-icons/fi'
+import { useAuth } from '../../hooks/auth'
 
 const Dashboad: React.FC = () => {
-  return <h1>Dashboardwadwad</h1>;
-};
+  const { signOut, user } = useAuth()
 
-export default Dashboad;
+  console.log(user)
+
+  return (
+    <Container>
+      <Header>
+        <HeaderContent>
+          <img src={logoImg} alt="Gobarber" />
+
+          <Profile>
+            <img src={user.avatar_url} alt={user.name} />
+            <div>
+              <span>Bem Vindo</span>
+              <strong>{user.name}</strong>
+            </div>
+          </Profile>
+
+          <button type="button" onClick={signOut}>
+            <FiPower />
+          </button>
+        </HeaderContent>
+      </Header>
+    </Container>
+  )
+}
+
+export default Dashboad
