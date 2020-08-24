@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe'
+import { getHours, parseISO } from 'date-fns'
 
 import Appointment from '../infra/typeorm/entities/Appointment'
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository'
@@ -41,10 +42,12 @@ class ListProviderAppointmentsService {
           month
         }
       )
-
       await this.cacheProvider.save(cacheKey, classToClass(appointments))
     }
-
+    appointments.sort(
+      (a, b) =>
+        getHours(parseISO(String(a.date))) - getHours(parseISO(String(b.date)))
+    )
     return appointments
   }
 }
