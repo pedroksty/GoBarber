@@ -44,10 +44,12 @@ class ListProviderAppointmentsService {
       )
       await this.cacheProvider.save(cacheKey, classToClass(appointments))
     }
+
     appointments.sort(
       (a, b) =>
         getHours(parseISO(String(a.date))) - getHours(parseISO(String(b.date)))
     )
+
     return appointments
   }
 }
