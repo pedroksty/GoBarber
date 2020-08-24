@@ -39,7 +39,8 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'no-unused-expressions': 'off',
     '@typescript-eslint/interface-name-prefix': 'off',
-    'no-useless-constructor': 'off'
+    'no-useless-constructor': 'off',
+    'import/no-duplicates': 'off'
   },
   settings: {
     'import/resolver': {
