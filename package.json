@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "dev:server": "yarn workspace @gobarber/server dev"
+    "dev:server": "yarn workspace @gobarber/server dev",
+    "dev:web": "yarn workspace @gobarber/web start"
   },
   "workspaces": {
     "packages": [
