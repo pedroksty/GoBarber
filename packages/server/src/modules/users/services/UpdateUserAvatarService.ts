@@ -1,13 +1,11 @@
-import path from 'path'
-import fs from 'fs'
 import { injectable, inject } from 'tsyringe'
 
 import AppError from '@shared/errors/AppError'
 
-import uploadConfig from '@config/upload'
 import User from '@modules/users/infra/typeorm/entities/User'
 import IUsersRepository from '../repositories/IUsersREpository'
 import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider'
+import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider'
 
 interface IRequest {
   user_id: string
@@ -20,7 +18,10 @@ class UpdateUserAvatarService {
     private usersRepository: IUsersRepository,
 
     @inject('StorageProvider')
-    private storageProvider: IStorageProvider
+    private storageProvider: IStorageProvider,
+
+    @inject('CacheProvider')
+    private cacheProvider: ICacheProvider
   ) {}
 
   public async execute({ user_id, avatarFileName }: IRequest): Promise<User> {
@@ -39,6 +40,9 @@ class UpdateUserAvatarService {
     user.avatar = fileName
 
     await this.usersRepository.save(user)
+
+    await this.cacheProvider.invalidatePrefix('providers-lists:*')
+    await this.cacheProvider.invalidate('provider-appointments:*')
 
     return user
   }

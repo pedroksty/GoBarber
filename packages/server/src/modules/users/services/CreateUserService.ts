@@ -44,6 +44,8 @@ class CreateUserService {
 
     await this.cacheProvider.invalidatePrefix('providers-lists:*')
 
+    await this.cacheProvider.invalidate(`provider-appointments:*`)
+
     return user
   }
 }
